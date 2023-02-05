@@ -45,23 +45,23 @@ while True:
 
 
     elif message == "поиск":
-        dict_all_persons = search_people_and_photos(sex, age_at, age_to, city, status)
-        add_users_and_search_params(connection,dict_all_persons,sex,age_at,age_to,city,status)
+        dict_all_questionnaires = search_people_and_photos(sex, age_at, age_to, city, status)
+        add_users_and_search_params(connection,dict_all_questionnaires,sex,age_at,age_to,city,status)
         name = dict_cur_user[user_id]['first_name']
         write_msg(user_id, f"{name}, для просмотра анкет введите 'смотреть'")
 
 
     elif message == "смотреть":
-        dict_for_view = select_search_params(connection,sex,age_at,age_to,city,status)#
+        dict_for_watch = select_search_params(connection,sex,age_at,age_to,city,status)#
 
-        if dict_for_view == {}:
+        if dict_for_watch == {}:
             write_msg(user_id, f"Записей для просмотра больше нет. Для повторного описка введите 'Поиск'")
         else:
-            dict_one_persons = select_one_user_for_view(connection,dict_for_view[1])
+            dict_one_question = select_one_user_for_view(connection,dict_for_watch[1])
             text, photo = prepare_photo(dict_one_persons)
             write_msg(user_id, text, photo)
             write_msg(user_id, "Для добавления в избранное введите 'добавить в избранное', для добавления в черный список введите 'добавить в черный список'")
-            id_in_list = dict_one_persons['id']
+            id_in_list = dict_one_question['id']
 
 
     elif message == "добавить в избранное":
@@ -83,7 +83,7 @@ while True:
             if favorites not in dict_favorites.keys():
                 write_msg(user_id, f"Избранные анкеты закончились. Для просмотра сначала введите 'с начала списка избранных'")
             else:
-                dict_one_persons = dict_favorites[favorites]
+                dict_one_question = dict_favorites[favorites]
                 text, photo = prepare_photo(dict_one_persons)
                 write_msg(user_id, text, photo)
                 favorites += 1
@@ -101,7 +101,7 @@ while True:
             if black_list not in dict_blacklist.keys():
                 write_msg(user_id, f"Анкеты в ЧС закончились. . Для просмотра сначала введите 'с начала черного списка'")
             else:
-                dict_one_persons = dict_blacklist[black_list]
+                dict_one_question = dict_blacklist[black_list]
                 text, photo = prepare_photo(dict_one_persons)
                 write_msg(user_id, text, photo)
                 black_list += 1
