@@ -2,8 +2,8 @@ from config.imports import *
 from vk_api.longpoll import VkLongPoll, VkEventType
 
 
-vk = vk_api.VkApi(token=access_token_group)
-longpoll = VkLongPoll(vk)
+vkt = vk_api.VkApi(token=access_token_group)
+longpoll = VkLongPoll(vkt)
 
 
 def event_listen():
@@ -21,7 +21,7 @@ def write_msg(user_id, message, attachment=None):
         att = 'Нет'
     print(f'''Пользователю с ID {user_id} отправлено сообщение"{message}"
     Вложения: {att}''')
-    vk.method('messages.send',
+    vkt.method('messages.send',
               {'user_id': user_id,
                'message': message,
                'random_id': randrange(10 ** 7),
