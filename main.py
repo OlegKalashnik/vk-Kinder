@@ -58,7 +58,7 @@ while True:
             write_msg(user_id, f"Записей для просмотра больше нет. Для повторного описка введите 'Поиск'")
         else:
             dict_one_question = select_one_user_for_view(connection,dict_for_watch[1])
-            text, photo = prepare_photo(dict_one_persons)
+            text, photo = prepare_photo(dict_one_question)
             write_msg(user_id, text, photo)
             write_msg(user_id, "Для добавления в избранное введите 'добавить в избранное', для добавления в черный список введите 'добавить в черный список'")
             id_in_list = dict_one_question['id']
@@ -84,7 +84,7 @@ while True:
                 write_msg(user_id, f"Избранные анкеты закончились. Для просмотра сначала введите 'с начала списка избранных'")
             else:
                 dict_one_question = dict_favorites[favorites]
-                text, photo = prepare_photo(dict_one_persons)
+                text, photo = prepare_photo(dict_one_question)
                 write_msg(user_id, text, photo)
                 favorites += 1
 
@@ -102,7 +102,7 @@ while True:
                 write_msg(user_id, f"Анкеты в ЧС закончились. . Для просмотра сначала введите 'с начала черного списка'")
             else:
                 dict_one_question = dict_blacklist[black_list]
-                text, photo = prepare_photo(dict_one_persons)
+                text, photo = prepare_photo(dict_one_question)
                 write_msg(user_id, text, photo)
                 black_list += 1
 
