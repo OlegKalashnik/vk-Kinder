@@ -28,7 +28,8 @@ creat_all_tables(connection)
 favorites = 1
 black_list = 1
 
-while True:
+
+   
     message, user_id = event_listen()
     sex, city, dict_cur_user = cur_user(user_id)
     add_users(connection,dict_cur_user)
