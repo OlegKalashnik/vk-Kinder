@@ -40,7 +40,7 @@ def create_table_black_list(connection):
                                  """
     connection.execute(value)
 
-def creat_all_tables(connection):
+def create_all_tables(connection):
     create_table_users(connection)
     create_table_search_params(connection)
     create_table_favorites_users(connection)
