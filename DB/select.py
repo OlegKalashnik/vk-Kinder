@@ -46,3 +46,8 @@ def select_search_params(connection, sex, age_at, age_to, city, status):
 
 # Выборка одного аккаунта для просмотра
 def select_one_user_for_view(connection, bd_id):
+    table = 'users'
+    columns = 'first_name, last_name, age, city, interests'
+    value = f"SELECT {columns} FROM {table} WHERE bd_id = ?;"
+    data = connection.execute(value, (bd_id,)).fetchall()
+    return data

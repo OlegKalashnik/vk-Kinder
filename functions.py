@@ -6,7 +6,7 @@ vkt = vk_api.VkApi(token=access_token_group)
 longpoll = VkLongPoll(vkt)
 
 
-def event_listen():
+def event_listen() -> object:
     for event in longpoll.listen():
         try:
             if event.type == VkEventType.MESSAGE_NEW:

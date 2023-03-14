@@ -49,3 +49,8 @@ def add_search_params(connection, bd_id, sex, age_from, age_to, city, status):
     columns = '''"param_sex","param_age_from","param_age_to","param_city","
 
 
+
+
+
+def add_black_list():
+    pass
