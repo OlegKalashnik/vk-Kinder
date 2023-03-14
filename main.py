@@ -1,7 +1,7 @@
 from DB.connect import connection
 from DB.create import creat_all_tables
 from DB.insert import (add_users, add_users_and_search_params, add_favorites_users, add_black_list)
-from DB.select import (select_search_params,select_one_user_for_view, select_favorites,mselect_blacklist)
+from DB.select import (select_search_params,select_one_user_for_view, select_favorites, select_blacklist)
 from app.main_app import (search_people_and_photos, cur_user)
 from functions import (event_listen,write_msg,prepare_photo)
 
@@ -48,15 +48,15 @@ elif message == "смотреть":
 
 
 elif message == "добавить в избранное":
-    add_favorites_users(connection,user_id,id_in_list)
+    add_favorites_users(connection, user_id, id_in_list)
     name = dict_cur_user[user_id]['first_name']
     write_msg(user_id, f"{name}, для дальнейшего просмотра введите 'смотреть'")
-
 
 elif message == "добавить в черный список":
-    add_black_list(connection,user_id,id_in_list)
+    add_black_list(connection, user_id, id_in_list)
     name = dict_cur_user[user_id]['first_name']
     write_msg(user_id, f"{name}, для дальнейшего просмотра введите 'смотреть'")
+
 
 
 elif message == "показать избранные анкеты":

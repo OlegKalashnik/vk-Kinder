@@ -8,7 +8,7 @@ def select_nalichie_users_DB(connection, id_vk):
     return data
 
 # Проверка наличия в ЧС
-def select_nalichie_users_v_blaklist(connection, bd_id):
+def select_blacklist(connection, bd_id):
     table = 'black_list'
     column2 = 'bl_list_id'
     value = f"SELECT {column2} FROM {table} WHERE {column2} = ?;"
@@ -16,7 +16,7 @@ def select_nalichie_users_v_blaklist(connection, bd_id):
     return data
 
 # Проверка наличия в избранных
-def select_nalichie_users_v_favorites(connection, bd_id):
+def select_favorites(connection, bd_id):
     table = 'favorites_users'
     column2 = 'fav_user_id'
     value = f"SELECT {column2} FROM {table} WHERE {column2} = ?;"
